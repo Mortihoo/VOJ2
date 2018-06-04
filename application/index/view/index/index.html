@@ -1,0 +1,32 @@
+{extend name="index/base" /}
+
+{block name="content"}
+<div align="center" style="font-size: x-large">
+    <div>
+        服务器时间:<span id="now">{$now}</span>
+    </div>
+    {if $now_time < $contest_start_time}
+    比赛未开始<br>
+    {elseif $now_time < $contest_end_time}
+    比赛进行中<br>
+    {else}
+    比赛结束<br>
+    {/if}
+</div>
+<div>
+        <pre>
+注意事项
+1、比赛时间为5小时
+2、对比赛题目有疑惑，请直接举手告知师兄师姐
+3、判题机判题速度较慢，请耐心等待
+4、请勿携带U盘等电子资料，手机关机或者上交讲台，仅允许带任何纸质资料
+5、判题机会返回AC、PE、WA、CE、TLE、MLE、RE,假如出现failed to post，此次提交不算罚时，重新提交即可
+6、题目难度不按顺序，请不要卡题
+7、此次比赛为个人赛，请勿交流
+     </pre>
+
+</div>
+<script src="static/js/index.js">
+</script>
+{/block}
+

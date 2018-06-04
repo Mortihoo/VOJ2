@@ -1,0 +1,19 @@
+{extend name="index/base" /}
+
+{block name="content"}
+<div id="bg">
+    <form action="classes/receivecode.php" method="post" class="form-style">
+        <label>
+            <span style="width:100%;text-align:center;display:block;">YourCode:</span>
+        </label>
+        <textarea id="usercode" name="usercode" placeholder="paste" style="font-size:16px ;margin: auto;display:block; height:500px">
+            {if $flag}
+                {$user_code}
+            {else}
+                {$msg}
+            {/if}
+        </textarea>
+    </form>
+</div>
+
+{/block}

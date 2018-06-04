@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {block name="header"}{/block}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>{block name="title"}Mortihoo PHP作业{/block}</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    {block name="js"}{/block}
+</head>
+<body>
+
+{if $user_id >0}
+<span style="float:right;">Hello  {$user_nickname}  | <a href="{:url('index/Index/logout')}">LOGOUT</a></span><br>
+{else}
+<span style="float:right;"><a href="{:url('index/Index/login')}">LOGIN</a>|<a href="{:url('index/Index/register')}">REGISTER</a></span><br>
+{/if}
+
+<header>
+    <h1>Virtual Online Judge</h1>
+    <span>Mortihoo php 作业</span>
+    <div class="clear_float"></div>
+    <nav>
+        <ul>
+            <li><a href="{:url('index/Index/index')}">Index</a></li>
+            <li><a href="{:url('index/Contest/problem_list')}">Problems</a></li>
+            <li><a href="{:url('index/Contest/submit')}">Submit</a></li>
+            <li><a href="{:url('index/Contest/status')}">Status</a></li>
+            <!--<li><a href="{:url('index/Contest/problem_list')}">Rank</a></li> -->
+        </ul>
+    </nav>
+    <hr>
+    <div class="clear_float"></div>
+</header>
+<div class="wrapper">
+
+{block name="content"}content{/block}
+
+</div>
+</body>
+</html>
+

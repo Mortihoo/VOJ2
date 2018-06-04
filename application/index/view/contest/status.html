@@ -1,0 +1,65 @@
+{extend name="index/base" /}
+
+{block name="header"}
+
+{/block}
+
+
+{block name="content"}
+<div id="content">
+    <h1>Realtime Status</h1>
+    <div class="m-list-table">
+        <table>
+            <thead>
+            <tr>
+                <th class="first" width="160">Run ID</th>
+                <th>Problem</th>
+                <th>User</th>
+                <th>Result</th>
+                <th>Time</th>
+                <th>Memory</th>
+                <th>Language</th>
+                <th>Submit Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="$status_list" id="status"}
+            {php}
+                $arr = array(
+                '0' => 'G++',
+                '1' => 'GCC',
+                '2' => 'C++',
+                '3' => 'C',
+                '4' => 'Pascal',
+                '5' => 'Java',
+                '6' => 'C#'
+                );
+                if (($status->id) & 1) echo '<tr class="odd">';
+                else echo '<tr>';
+                echo '<td class="first">' . $status->id . '</td>';
+                echo '<td><a href="">' . $status->problem_id . '</a></td>';
+                echo '<td><a href="">' . $status->user_id. '</a></td>';
+
+                if ($status->status == 'Accepted') echo '<td><span style="color:green">Accepted</span></td>';
+                else if ($status->status == 'Compilation Error')
+                echo '<td><span style="color:navy">Compilation Error</span></td>';
+                else if ($status->status == 'FailToPost')
+                echo '<td><span style="color:purple">FailToPost</span></td>';
+                else
+                echo '<td><span style="color:red">' . $status->status . '</span></td>';
+                echo '<td><a href="">' . $status->runtime . '</a></td>';
+                echo '<td><a href="">' . $status->memory . '</a></td>';
+                $rid = $status->id;
+                $url = '/contest/viewcode/'.$rid.'"';
+                echo '<td><a href="'.$url.'">' . $arr[$status->lang] . '</a></td>';
+                echo '<td><a href="">' . $status->time . '</a></td>';
+                echo '</tr>';
+            {/php}
+            {/volist}
+
+            </tbody>
+        </table>
+        {$status_list|raw}
+    </div>
+</div>
+{/block}
